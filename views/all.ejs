@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Blogs | LuvTheBlog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel = "stylesheet" type = "text/css" href = "/stylesheets/all.css">
+    <link rel = "icon" type = "image/icon" href = "/images/blogger.png">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="bg-element element-1"></div>
+        <div class="bg-element element-2"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header>
+        <a href="/" class="logo">
+            <i class="fas fa-pen-fancy"></i>Luv<span>TheBlog</span>
+        </a>
+        <div class="nav-buttons">
+            <a href = "/profile">
+            <button class="nav-btn profile" id="profileBtn">
+                <i class="fas fa-user-circle"></i>
+                <span>Profile</span>
+            </button>
+            </a>
+            <a href = "/signout">
+            <button class="nav-btn signout" id="signoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Sign Out</span>
+            </button>
+            </a>
+            <a href = "/">
+            <button class="nav-btn home" id="homeBtn">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </button>
+            </a>
+            <a href = "/create">
+            <button class="nav-btn create-blog" id="createBlogBtn">
+                <i class="fas fa-plus-circle"></i>
+                <span>Create Blog</span>
+            </button>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Your Published Blogs</h1>
+            <p>Manage, edit, and track the performance of all your published blogs in one place.</p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="stat-value" id="totalBlogs"><%= total  %></div>
+                <div class="stat-label">Total Blogs</div>
+            </div>
+            
+            <!--
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="stat-value" id="totalLikes">1.2K</div>
+                <div class="stat-label">Total Likes</div>
+            </div>
+        -->
+        </div>
+
+        <!-- Blogs Grid -->
+        <div class="blogs-container" id="blogsContainer">
+            <%  all.forEach((blog)=>{  %>
+                <div class="blog-card featured">
+                <div class="blog-image" style="background-image: url('<%=  blog.blog  %>')">
+                    <div class="blog-overlay"></div>
+                    <div class="blog-actions">
+                        <a href = "/edit/<%= blog.content  %>">
+                        <button class="blog-action-btn" title="Edit Blog">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        </a>
+                        <a href = "/delete/<%=blog.content  %>">
+                        <button class="blog-action-btn" title="Delete Blog">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="blog-content">
+                    <h3 class="blog-title"><%=  blog.title  %></h3>
+                    <p class="blog-excerpt"><%=  blog.content  %></p>
+                    
+                    <div class="blog-meta">
+                        <div class="author-avatar">
+                            <img id = "dp" src = "<%= blog.picture %>">
+                        </div>
+                        <div class="author-info">
+                            <div class="author-name"><%= blog.name  %></div>
+                            <div class="author-email"><%= blog.email  %></div>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-stats">
+                        <div class="blog-stat" id="likeBtn1">
+                            <div class="stat-icon-small">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div>
+                                <div class="stat-count"><%=  blog.likes  %></div>
+                                <div>Likes</div>
+                            </div>
+                        </div>
+                         <div class="blog-date"><%=  blog.date   %></div>
+                    </div>
+                </div>
+            </div>
+
+          <%  }) %>
+
+        <!-- Empty State (Hidden by default) -->
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <div class="empty-icon">
+                <i class="fas fa-file-alt"></i>
+            </div>
+            <h3>No Blogs Yet</h3>
+            <p>You haven't published any blogs yet. Start sharing your thoughts and ideas with the world by creating your first blog post.</p>
+            <button class="btn-create" id="createFirstBlog">
+                <i class="fas fa-plus-circle"></i> Create Your First Blog
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 LuvTheBlog. All rights reserved. Your stories, your platform.</p>
+    </footer>
+    <script src = "/javascripts/all.js"></script>
+</body>
+</html>

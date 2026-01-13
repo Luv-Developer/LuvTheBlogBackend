@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Blogs | LuvTheBlog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel = "stylesheet" type = "text/css" href = "/stylesheets/other.css">
+    <link rel = "icon" type = "image/icon" href = "/images/blogger.png">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="bg-dot dot-1"></div>
+        <div class="bg-dot dot-2"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header>
+        <a href="/" class="logo">
+            <i class="fas fa-pen-fancy"></i>Luv<span>TheBlog</span>
+        </a>
+        <div class="nav-buttons">
+            <a href = "/profile">
+            <button class="nav-btn profile" id="profileBtn">
+                <i class="fas fa-user-circle"></i>
+                <span>Profile</span>
+            </button>
+            </a>
+            <a href = "/signout">
+            <button class="nav-btn signout" id="signoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Sign Out</span>
+            </button>
+            </a>
+            <a href = "/create">
+            <button class="nav-btn create-blog" id="createBlogBtn">
+                <i class="fas fa-plus-circle"></i>
+                <span>Create Blog</span>
+            </button>
+            </a>
+            <a href = "/">
+            <button class="nav-btn home" id="homeBtn">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </button>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Discover Amazing Blogs</h1>
+            <p>Explore inspiring content from writers around the world. Like, comment, and connect with fellow bloggers.</p>
+        </div>
+
+        <!-- Search and Filter Bar -->
+        <div class="filter-bar">
+            <div class="search-container">
+                <div class="search-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <input type="text" class="search-input" id="searchInput" placeholder="Search blogs by title, author, or topic...">
+            </div>
+        </div>
+
+        <!-- Blogs Grid -->
+        <div class="blogs-container" id="blogsContainer">
+            <% otherblog.forEach((blog)=>{  %>
+                <div class="blog-card" data-category="trending technology">
+                <div class="blog-image" style="background-image: url('<%= blog.blog  %>')">
+                    <div class="blog-overlay"></div>
+                </div>
+                <div class="blog-content">
+                    <h3 class="blog-title"><%= blog.title %></h3>
+                    <p class="blog-excerpt"><%= blog.content  %></p>
+                    
+                    <div class="blog-meta">
+                        <div class="author-avatar avatar-1">
+                            <img id = "dp" src = "<%= blog.picture  %>">
+                        </div>
+                        <div class="author-info">
+                            <div class="author-name">
+                                <%= blog.name  %>
+                                <a href = "/follow/<%= blog.email %>">
+                                <% if(blog.followeremail == "none"){ %>
+                                    <button class="follow-btn">Follow</button>
+                              <%  }else{   %>
+                              <%  } %>
+                                </a>
+                            </div>
+                            <div class="author-email"><%= blog.email  %></div>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-actions">
+                            <%  if(blog.likedby == liked){ %>
+                            <div class="like-section">
+                            <button disabled class="like-btn" id="likeBtn1">
+                                <i class="far fa-heart"></i>
+                            </button>    
+                        <div class="like-count" id="likeCount1"><%= blog.likes  %></div>
+                         <%   }else{   %>
+                        <a href = "/like/<%= blog.content  %>"></a>
+                        <div class="like-section">
+                            <button class="like-btn" id="likeBtn1">
+                                <i class="far fa-heart"></i>
+                            </button>    
+                        <div class="like-count" id="likeCount1"><%= blog.likes  %></div>
+                         <%   }     %>
+                        </div>
+                        </a>
+                        <button id = "sharebtn" class="action-btn"><i class="fas fa-share"></i>Share</button>
+                        <div class="blog-date"><%= blog.date  %></div>
+                    </div>
+                </div>
+            </div>
+          <%  }) %>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 LuvTheBlog. All rights reserved. Discover, Connect, Inspire.</p>
+    </footer>
+    <script src = "/javascripts/other.js"></script>
+</body>
+</html>

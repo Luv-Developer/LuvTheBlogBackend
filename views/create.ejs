@@ -1,0 +1,163 @@
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuvTheBlog | Create Blog</title>
+</head>
+<body>
+    <form action = "/create" method = "post" enctype="multipart/form-data">
+        <h1>Create Blog</h1>
+        <span>Upload Image for the Blog</span>
+        <br>
+        <input type = "file" name = "file" required>
+        <br><br>
+        <input type = "text" placeholder="enter the title" name = "title" required>
+        <br><br>
+        <button>Post</button>
+    </form>
+</body>
+</html>
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Blog | LuvTheBlog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel = "stylesheet" type = "text/css" href = "/stylesheets/create.css">
+    <link rel = "icon" type = "image/icon" href = "/images/blogger.png">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="bg-particle particle-1"></div>
+        <div class="bg-particle particle-2"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header>
+        <a href="/" class="logo">
+            <i class="fas fa-pen-fancy"></i>Luv<span>TheBlog</span>
+        </a>
+        <div class="nav-buttons">
+            <a href = "/profile">
+            <button class="nav-btn profile" id="profileBtn">
+                <i class="fas fa-user-circle"></i>
+                <span>Profile</span>
+            </button>
+            </a>
+            <a href = "/signout">
+            <button class="nav-btn signout" id="signoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Sign Out</span>
+            </button>
+            </a>
+            <a href = "/all">
+            <button class="nav-btn your-blogs" id="yourBlogsBtn">
+                <i class="fas fa-book-open"></i>
+                <span>Your Blogs</span>
+            </button>
+            </a>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Create Your Masterpiece</h1>
+            <p>Share your thoughts, stories, and ideas with the world. Upload an image, write a captivating title, and start crafting your blog post.</p>
+        </div>
+
+        <form action="/create" method="post" enctype="multipart/form-data">
+        <div class="create-blog-card">
+            <!-- Image Upload Section -->
+            <div class="image-upload-section">
+                <h2 class="section-title">
+                    <i class="fas fa-image"></i> Blog Cover Image
+                </h2>
+                <div class="image-upload-container" id="imageUploadContainer">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <div class="upload-text">
+                        <h3>Upload a Cover Image</h3>
+                        <p>Drag & drop an image here or click to browse</p>
+                        <button type="button" class="btn-upload" id="browseBtn">
+                            <i class="fas fa-folder-open"></i> Browse Files
+                        </button>
+                        <input name = "file" type="file" id="imageInput" accept="image/*" style="display: none;">
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--gray);">
+                            Recommended: 1200x630 pixels, max 5MB
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Image Preview -->
+                <div class="image-preview" id="imagePreview">
+                    <div class="preview-container">
+                        <img class="preview-image" id="previewImage" src="" alt="Blog Cover Preview">
+                        <button type="button" class="remove-image" id="removeImageBtn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Progress Bar -->
+                <div class="progress-container" id="progressContainer">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+            </div>
+            <div class="title-section">
+                <h2 class="section-title">
+                    Blog Title
+                </h2>
+                <div class="title-input-container">
+                    <div class="title-icon">
+                        <i class="fas fa-pen"></i>
+                    </div>
+                    <input name="title"
+                           type="text" 
+                           class="title-input" 
+                           id="blogTitle" 
+                           placeholder="Enter a captivating title for your blog..."
+                           maxlength="100">
+                </div>
+                <div class="char-count" id="charCount">0/100 characters</div>
+            </div>
+                      <div class="title-section">
+                <h2 class="section-title">
+                Blog Content
+                </h2>
+                <div class="title-input-container">
+                    <div class="title-icon">
+                        <i class="fas fa-pen"></i>
+                    </div>
+                    <input name = "content"
+                           type="text" 
+                           class="title-input" 
+                           id="blogTitle" 
+                           placeholder="Enter a captivating content for your blog..."
+                           maxlength="5000">
+                </div>
+                <div class="char-count" id="charCount">0/1000 characters</div>
+            </div>
+            <!-- Post Button -->
+            <div class="post-section">
+                <button type="submit" class="btn-post" id="postBlogBtn">
+                    <i class="fas fa-paper-plane"></i> Publish Blog
+                </button>
+            </div>
+        </div>
+        </div>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2026 LuvTheBlog. All rights reserved. Share your story with the world.</p>
+    </footer>
+    <script src = "/javascripts/create.js"></script>
+</body>
+</html>

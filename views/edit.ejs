@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Blog | LuvTheBlog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel = "stylesheet" type = "text/css" href = "/stylesheets/edit.css">
+    <link rel = "icon" type = "image/icon" href = "/images/blogger.png">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="bg-wave wave-1"></div>
+        <div class="bg-wave wave-2"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header>
+        <a href="/" class="logo">
+            <i class="fas fa-pen-fancy"></i>Luv<span>TheBlog</span>
+        </a>
+        <div class="nav-buttons">
+            <a href = "/">
+            <button class="nav-btn home" id="homeBtn">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </button>
+            </a>
+            <a href = "/signout">
+            <button class="nav-btn signout" id="signoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Sign Out</span>
+            </button>
+            </a>
+            <a href = "/profile">
+            <button class="nav-btn profile" id="profileBtn">
+                <i class="fas fa-user-circle"></i>
+                <span>Profile</span>
+            </button>
+            </a>
+            <a href = "/all">
+            <button class="nav-btn your-blogs" id="yourBlogsBtn">
+                <i class="fas fa-book-open"></i>
+                <span>Your Blogs</span>
+            </button>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Edit Your Blog</h1>
+            <p>Update your blog title and content. Make sure your changes reflect your best work before publishing.</p>
+        </div>
+
+        <!-- Original Blog Preview -->
+        <div class="original-blog">
+            <h3 class="original-title" id="originalTitle"><%=  title  %></h3>
+            <div class="original-meta">
+                <div>Originally published: <strong><%= date  %></strong></div>
+            </div>
+            <div class="original-content" id="originalContent">
+                <p><%= content   %></p>
+            </div>
+        </div>
+
+        <!-- Edit Form Container -->
+        <div class="edit-form-container">
+            <div class="form-header">
+                <h2>Make Your Changes</h2>
+                <p>Edit the fields below to update your blog</p>
+            </div>
+
+            <form action = "/edit" method = "post" id="editBlogForm">
+                <!-- Title Input -->
+                 <input style="visibility: hidden;" type = "text" name = "oldcontent" value = "<%=  content %>">
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-heading"></i>
+                        New Blog Title
+                    </label>
+                    <div class="input-container">
+                        <input name = "newtitle" 
+                               type="text" 
+                               class="form-input title" 
+                               id="blogTitle" 
+                               placeholder="Enter your updated blog title..."
+                               value="<%= title   %>"
+                               maxlength="120">
+                        <div class="input-focus-line"></div>
+                    </div>
+                    <div class="char-counter" id="titleCharCount">0/120 characters</div>
+                </div>
+
+                <!-- Content Input -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-edit"></i>
+                        New Blog Content
+                    </label>
+                    <div class="input-container">
+                        <textarea name = "newcontent"
+                                  class="form-input content" 
+                                  id="blogContent" 
+                                  placeholder="Write your updated blog content here..."
+                                  rows="10"
+                                  maxlength="5000"
+                                  value = "<%=  content  %>"></textarea>
+                        <div class="input-focus-line"></div>
+                    </div>
+                    <div class="char-counter" id="contentCharCount">0/5000 characters</div>
+                </div>
+
+                <!-- Loading Animation -->
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Updating your blog...</p>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="form-actions">
+                    <button type="button" class="btn btn-preview" id="previewBtn">
+                        <i class="fas fa-eye"></i> Preview Changes
+                    </button>
+                    <button type="submit" class="btn btn-update" id="updateBtn">
+                        <i class="fas fa-save"></i> Update Blog
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Preview Modal -->
+    <div class="modal-overlay" id="previewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Preview Updated Blog</h3>
+                <button class="close-modal" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="preview-title" id="previewTitle"></h2>
+                <div class="preview-content" id="previewContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 LuvTheBlog. All rights reserved. Edit, Improve, Publish.</p>
+    </footer>
+    <script src = "/javascripts/edit.js"></script>
+</body>
+</html>

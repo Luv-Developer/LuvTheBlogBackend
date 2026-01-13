@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Profile | LuvTheBlog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel = "stylesheet" type = "text/css" href = "/stylesheets/profile.css">
+    <link rel = "icon" type = "image/icon" href = "/images/blogger.png">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="bg-circle circle-1"></div>
+        <div class="bg-circle circle-2"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header>
+        <a href="/" class="logo">
+            <i class="fas fa-pen-fancy"></i>Luv<span>TheBlog</span>
+        </a>
+        <div class="nav-buttons">
+            <a href = "/">
+            <button class="nav-btn" id="homeBtn">
+                <i class="fas fa-home"></i> Home
+            </button>
+            </a>
+            <a href = "/signout">
+            <button class="nav-btn">
+            <i class="fas fa-sign-out-alt"></i>Sign Out
+            </button>
+            </a>
+            <a href = "/create">
+            <button class="nav-btn" id="createBlogBtn">
+                <i class="fas fa-plus-circle"></i> Create Blog
+            </button>
+            </a>
+            <a href = "/all">
+            <button class="nav-btn" id="yourBlogsBtn">
+                <i class="fas fa-book-open"></i> Your Blogs
+            </button>
+            </a>
+            <a href = "/other">
+            <button class="nav-btn active" id="othersBlogsBtn">
+                <i class="fas fa-users"></i> Others' Blogs
+            </button>
+            </a>
+        </div>
+    </header>
+
+    <!-- Profile Container -->
+    <div class="profile-container">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="profile-photo-container">
+                    <img id = "pic" src="<%= picture %>" alt="Profile picture" referrerpolicy="no-referrer">
+            </div>
+            
+            <div class="profile-info">
+                <h1 class="profile-name" id="profileName"><%=  name  %></h1>
+                <div class="profile-email">
+                    <i class="fas fa-envelope"></i>
+                    <span id="profileEmail"><%=  email  %></span>
+                </div>
+                
+                <div class="profile-stats">
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="stat-value" id="totalPosts"><%= total %></div>
+                        <div class="stat-label">Total Posts</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="stat-value" id="totalLikes"><%= totallikes  %></div>
+                        <div class="stat-label">Total Likes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Details -->
+        <div class="profile-details">
+            <div class="details-card">
+                <h2 class="card-title">
+                    <i class="fas fa-info-circle"></i> Personal Information
+                </h2>
+                <div class="detail-item">
+                    <span class="detail-label">Full Name</span>
+                    <span class="detail-value" id="detailName"><%= name  %></span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Username</span>
+                    <span class="detail-value">@<%= name %></span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Bio</span>
+                    <span class="detail-value">Travel blogger & Food enthusiast ✨ Exploring the world one story at a time</span>
+                </div>
+            </div>
+            
+            <div class="details-card">
+                <h2 class="card-title">
+                    <i class="fas fa-map-marker-alt"></i> Location & Details
+                </h2>
+                <div class="detail-item">
+                    <span class="detail-label">Country</span>
+                    <span class="detail-value">
+                        <div class="country-flag">
+                            <span>India</span>
+                        </div>
+                    </span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Member Since</span>
+                    <span class="detail-value" id="memberSince"><%=  date  %></span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">User</span>
+                    <span class="detail-value" id="memberSince">Premium</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 LuvTheBlog. All rights reserved. Connect, Write, Inspire.</p>
+    </footer>
+    <script src = "/javascripts/profile.js"></script>
+</body>
+</html>
