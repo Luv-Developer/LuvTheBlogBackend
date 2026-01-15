@@ -84,7 +84,7 @@ app.post("/signin",async(req,res)=>{
             else{
                 let token = jwt.sign({email},SECRETKEY)
                 res.cookie("token",token)
-                return res.status(201).redirect("/profile")
+                return res.status(201)
             }
         }
         else{
