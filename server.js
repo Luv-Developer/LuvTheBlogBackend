@@ -23,7 +23,7 @@ app.use(express.urlencoded({extended:true}))
 app.set("view engine","ejs")
 app.use(express.static(path.join(__dirname,"public")))
 app.use(cors({
-    origin:["http://localhost:5173"],
+    origin:["https://luv-the-blog.vercel.app"],
     credentials:true,
     methods:["POST","GET"]
 }))
@@ -54,7 +54,7 @@ app.get("/",(req,res)=>{
     res.render("home")
 })
 app.get("/signin",(req,res)=>{
-    return res.redirect("http://localhost:5173")
+    return res.redirect("https://luv-the-blog.vercel.app")
 })
 app.post("/signin",async(req,res)=>{
     let {name,email,picture} = req.body
